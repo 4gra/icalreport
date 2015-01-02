@@ -8,9 +8,10 @@
 # conditions; view the included file LICENCE for details.
 #
 file=$1
-base=$(basename $1 .ics)
+bn=$(basename "$file" ".ics")
+bd=$(dirname $0)
 [[ -z $file ]] && { echo "Usage: $(basename $0) <icsfile.ics>)" >&2; exit 1; }
 
-python ./icalreport.py "$1" | xsltproc icalreport.xslt - > "${base}.html"
+python "${bd}/icalreport.py" "$1" | xsltproc "${bd}/icalreport.xslt" - > "${bn}.html"
 
-[[ $? == 0 && -e ${base}.html ]] && { echo "${base}.html written." >&2; }
+[[ $? == 0 && -e "${bn}.html" ]] && { echo "${bn}.html written." >&2; }
