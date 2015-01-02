@@ -24,8 +24,8 @@ conditions; view the included file LICENCE for details.
       <h1>Events</h1>
       <table>
       <thead>
-        <tr><th>Start</th><th rowspan="2">Full Entry</th></tr>
-        <tr><th>End</th></tr>
+        <tr><th>Start Date/Time</th><th rowspan="2">Summary, Location and Description</th></tr>
+        <tr><th>End Date/Time</th></tr>
       </thead>
       <tbody>
         <xsl:apply-templates select="event">
@@ -40,24 +40,25 @@ conditions; view the included file LICENCE for details.
 <!-- inner templates -->
   <xsl:template match="event">
     <tr>
-    <td class="sep"><xsl:text>Start: </xsl:text><xsl:value-of select="dtstart"/></td>
-    <td class="sep" rowspan="2">
+    <td class="sep date"><strong><xsl:text>S</xsl:text></strong><xsl:text>: </xsl:text><xsl:value-of select="dtstart"/></td>
+    <td class="sep" rowspan="2" valign="top">
     <xsl:value-of select="summary"/>
     <xsl:apply-templates select="location"/>
     <xsl:apply-templates select="description"/>
     </td>
     </tr>
     <tr>
-    <td><xsl:text>End: </xsl:text><xsl:value-of select="dtend"/></td>
+    <td class="date"><strong><xsl:text>E</xsl:text></strong><xsl:text>: </xsl:text><xsl:value-of select="dtend"/></td>
     </tr>
   </xsl:template>
  
   <xsl:template match="location">
-  <br/><xsl:text>Location: </xsl:text><xsl:value-of select="."/>
+    <br/><strong><xsl:text>Location</xsl:text></strong><xsl:text>: </xsl:text><xsl:value-of select="."/>
   </xsl:template>
 
   <xsl:template match="description">
-  <br/><xsl:text>Description: </xsl:text><xsl:value-of select="."/>
+    <br/><pre><strong><xsl:text>Description</xsl:text></strong><xsl:text>: </xsl:text>
+    <xsl:value-of select="."/></pre>
   </xsl:template>
  
 </xsl:stylesheet>
