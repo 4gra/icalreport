@@ -3,7 +3,7 @@ icalreport
 Takes iCalendar/vCalendar-like data and produces an HTML report containing all
 events.
 
-Converts vCalendar/iCalendar data (tested on the output of the readpst tool)
+Converts vCalendar/iCalendar data (tested on the output of the [readpst](http://www.five-ten-sg.com/libpst/rn01re01.html) tool)
 into a simple HTML report view.  It only includes a very small subset of tags
 (but it's easy to add more).
 
